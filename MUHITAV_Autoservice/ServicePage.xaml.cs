@@ -24,7 +24,7 @@ namespace MUHITAV_Autoservice
         {
             InitializeComponent();
             var currentServices = МУХИТАОАОВ_автосервисEntities.GetContext().SERVESYS.ToList();
-            ServiceListView.ItemsSource = currentServices;
+            //ServiceListView.ItemsSource = currentServices;
         }
 
         private void Button_c(object sender, RoutedEventArgs e)

@@ -9,8 +9,8 @@
       Title="ServicePage">
 
     <Grid>
-        <!--<Button Content="Вперед" Height="30" Width="175" Background="#FFFF9C1A" Click="Button_Click"></Button>-->
-        <ListView Name="ServiceListView" >
+        <Button Content="Вперед" Height="30" Width="175" Background="#FFFF9C1A" Click="Button_Click"></Button>
+        <!--<ListView Name="ServiceListView" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -46,6 +46,6 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
     </Grid>
 </Page>
