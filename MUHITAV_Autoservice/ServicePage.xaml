@@ -9,7 +9,7 @@
       Title="ServicePage">
 
     <Grid>
-        <!--<Button Content="Вперед" Height="30" Width="175" Background="#FFFF9C1A" Click="Button_Click"></Button>-->
+        <!--<Button Content="Вперед" Height="30" Width="175" Background="#FFFF9C1A" Click="Button_Click"></Button> boba boba bobaboba boba-->
         <ListView Name="ServiceListView" >
             <ListView.ItemTemplate>
                 <DataTemplate>
