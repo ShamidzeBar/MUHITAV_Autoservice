@@ -31,6 +31,16 @@ namespace MUHITAV_Autoservice
             UpdateServices();
         }
 
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage(null));
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as SERVESYS));
+        }
+
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateServices();
@@ -50,11 +60,6 @@ namespace MUHITAV_Autoservice
         private void Button_c(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new AddEditPage());
         }
 
         private void UpdateServices()
@@ -97,6 +102,15 @@ namespace MUHITAV_Autoservice
                 currentServices = currentServices.OrderBy(p => p.Cost).ToList();
             }
             ServiceListView.ItemsSource = currentServices;  
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                МУХИТАОАОВ_автосервисEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ServiceListView.ItemsSource = МУХИТАОАОВ_автосервисEntities.GetContext().SERVESYS.ToList();
+            }
         }
     }
 }
