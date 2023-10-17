@@ -16,14 +16,12 @@ namespace MUHITAV_Autoservice
     public partial class МУХИТАОАОВ_автосервисEntities : DbContext
     {
         private static МУХИТАОАОВ_автосервисEntities _context;
-
         public static МУХИТАОАОВ_автосервисEntities GetContext()
         {
             if (_context == null)
                 _context = new МУХИТАОАОВ_автосервисEntities();
             return _context;
         }
-
         public МУХИТАОАОВ_автосервисEntities()
             : base("name=МУХИТАОАОВ_автосервисEntities")
         {
@@ -44,7 +42,6 @@ namespace MUHITAV_Autoservice
         public virtual DbSet<ProductSale> ProductSale { get; set; }
         public virtual DbSet<SERVESYS> SERVESYS { get; set; }
         public virtual DbSet<ServicePhoto> ServicePhoto { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
     }
 }
