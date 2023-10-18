@@ -26,17 +26,22 @@ namespace MUHITAV_Autoservice
         int CountPage;
         int CurrentPage = 0;
 
-        List<SERVESYS> CurrentPageList = new List<SERVESYS>();
-        List<SERVESYS> TableList;
+        List<Service> CurrentPageList = new List<Service>();
+        List<Service> TableList;
         public ServicePage()
         {
             InitializeComponent();
-            var currentServices = МУХИТАОАОВ_автосервисEntities.GetContext().SERVESYS.ToList();
+            var currentServices = МУХИТАОАОВ_автосервисEntities.GetContext().Service.ToList();
             ServiceListView.ItemsSource = currentServices;
 
             ComboType.SelectedIndex = 0;
 
             UpdateServices();
+        }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new SignUpPage((sender as Button).DataContext as Service));
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -46,7 +51,7 @@ namespace MUHITAV_Autoservice
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as SERVESYS));
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Service));
         }
 
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -67,7 +72,7 @@ namespace MUHITAV_Autoservice
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var currentService = (sender as Button).DataContext as SERVESYS;
+            var currentService = (sender as Button).DataContext as Service;
 
             var currentClientServices = МУХИТАОАОВ_автосервисEntities.GetContext().ClientService.ToList();
             currentClientServices = currentClientServices.Where(p => p.ServiceID == currentService.ID).ToList();
@@ -81,9 +86,9 @@ namespace MUHITAV_Autoservice
                 {
                     try
                     {
-                        МУХИТАОАОВ_автосервисEntities.GetContext().SERVESYS.Remove(currentService);
+                        МУХИТАОАОВ_автосервисEntities.GetContext().Service.Remove(currentService);
                         МУХИТАОАОВ_автосервисEntities.GetContext().SaveChanges();
-                        ServiceListView.ItemsSource = МУХИТАОАОВ_автосервисEntities.GetContext().SERVESYS.ToList();
+                        ServiceListView.ItemsSource = МУХИТАОАОВ_автосервисEntities.GetContext().Service.ToList();
                         UpdateServices();
                     }
                     catch (Exception ex)
@@ -122,50 +127,50 @@ namespace MUHITAV_Autoservice
             }
             else
             {
-                switch(direction)
+                switch (direction)
                 {
                     case 1:
-                        if(CurrentPage > 0)
+                        if (CurrentPage > 0)
                         {
                             CurrentPage--;
                             min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * 10 + 10 : CountRecords;
-                            for(int i = CurrentPage * 10; i < min; i++)
+                            for (int i = CurrentPage * 10; i < min; i++)
                             {
                                 CurrentPageList.Add(TableList[i]);
                             }
                         }
                         else
                         {
-                            Ifupdate= false;
+                            Ifupdate = false;
                         }
                         break;
                     case 2:
-                        if(CurrentPage < CountPage - 1)
+                        if (CurrentPage < CountPage - 1)
                         {
                             CurrentPage++;
-                            min = CurrentPage*10+10<CountRecords ? CurrentPage * 10 + 10 : CountRecords;
-                            for(int i = CurrentPage * 10; i < min; i++)
+                            min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * 10 + 10 : CountRecords;
+                            for (int i = CurrentPage * 10; i < min; i++)
                             {
                                 CurrentPageList.Add(TableList[i]);
                             }
                         }
                         else
                         {
-                            Ifupdate= false;
+                            Ifupdate = false;
                         }
                         break;
                 }
             }
-            if(Ifupdate)
+            if (Ifupdate)
             {
                 PageListBox.Items.Clear();
-                for(int i = 1; i <= CountPage; i++)
+                for (int i = 1; i <= CountPage; i++)
                 {
                     PageListBox.Items.Add(i);
                 }
                 PageListBox.SelectedIndex = CurrentPage;
 
-                min = CurrentPage*10+10 < CountRecords? CurrentPage * 10+10 : CountRecords;
+                min = CurrentPage * 10 + 10 < CountRecords ? CurrentPage * 10 + 10 : CountRecords;
                 TBCount.Text = min.ToString();
                 TBAllRecords.Text = " из " + CountRecords.ToString();
 
@@ -173,6 +178,8 @@ namespace MUHITAV_Autoservice
                 ServiceListView.Items.Refresh();
             }
         }
+
+    
 
         private void PageListBox_MouseUp(object sender, MouseEventArgs e)
         {
@@ -191,7 +198,7 @@ namespace MUHITAV_Autoservice
 
         private void UpdateServices()
         {
-            var currentServices = МУХИТАОАОВ_автосервисEntities.GetContext().SERVESYS.ToList();
+            var currentServices = МУХИТАОАОВ_автосервисEntities.GetContext().Service.ToList();
 
             if (ComboType.SelectedIndex == 0)
             {
@@ -238,7 +245,7 @@ namespace MUHITAV_Autoservice
             if (Visibility == Visibility.Visible)
             {
                 МУХИТАОАОВ_автосервисEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                ServiceListView.ItemsSource = МУХИТАОАОВ_автосервисEntities.GetContext().SERVESYS.ToList();
+                ServiceListView.ItemsSource = МУХИТАОАОВ_автосервисEntities.GetContext().Service.ToList();
             }
             UpdateServices();
         }

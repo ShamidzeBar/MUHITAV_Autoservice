@@ -32,7 +32,7 @@ namespace MUHITAV_Autoservice
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CLEINTS> CLEINTS { get; set; }
+        public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<ClientService> ClientService { get; set; }
         public virtual DbSet<DocumentByService> DocumentByService { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
@@ -40,8 +40,9 @@ namespace MUHITAV_Autoservice
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductPhoto> ProductPhoto { get; set; }
         public virtual DbSet<ProductSale> ProductSale { get; set; }
-        public virtual DbSet<SERVESYS> SERVESYS { get; set; }
+        public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServicePhoto> ServicePhoto { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
     }
 }

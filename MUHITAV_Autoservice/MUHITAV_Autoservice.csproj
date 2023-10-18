@@ -68,7 +68,7 @@
     <Compile Include="AddEditPage.xaml.cs">
       <DependentUpon>AddEditPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CLEINTS.cs">
+    <Compile Include="Clients.cs">
       <DependentUpon>MUHITOVModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ClientService.cs">
@@ -113,13 +113,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SERVESYS.cs">
+    <Compile Include="Service.cs">
       <DependentUpon>MUHITOVModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ServicePage.xaml.cs">
       <DependentUpon>ServicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ServicePhoto.cs">
+      <DependentUpon>MUHITOVModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
       <DependentUpon>MUHITOVModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Tag.cs">
@@ -142,6 +148,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ServicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignUpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,16 +195,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MUHITOVModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MUHITOVModel.edmx</DependentUpon>
-      <LastGenOutput>MUHITOVModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="MUHITOVModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MUHITOVModel.edmx</DependentUpon>
-      <LastGenOutput>MUHITOVModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\picture.png" />
     <Resource Include="Услуги автосервиса\diz.jpg" />
     <Resource Include="Услуги автосервиса\rulevoe-upravlenie-avtomobilya.jpg" />
@@ -211,6 +211,19 @@
     <Resource Include="Услуги автосервиса\Топливная система.png" />
     <Resource Include="Услуги автосервиса\Шиномонтаж.jpg" />
     <Resource Include="Услуги автосервиса\Электрика.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MUHITOVModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MUHITOVModel.edmx</DependentUpon>
+      <LastGenOutput>MUHITOVModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MUHITOVModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MUHITOVModel.edmx</DependentUpon>
+      <LastGenOutput>MUHITOVModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Услуги автосервиса\Двигатель.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

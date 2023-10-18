@@ -17,13 +17,13 @@ namespace MUHITAV_Autoservice
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Gender()
         {
-            this.CLEINTS = new HashSet<CLEINTS>();
+            this.Clients = new HashSet<Clients>();
         }
     
         public string Code { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLEINTS> CLEINTS { get; set; }
+        public virtual ICollection<Clients> Clients { get; set; }
     }
 }

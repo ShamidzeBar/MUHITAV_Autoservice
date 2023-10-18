@@ -12,19 +12,12 @@ namespace MUHITAV_Autoservice
     using System;
     using System.Collections.Generic;
     
-    public partial class Tag
+    public partial class sysdiagrams
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tag()
-        {
-            this.Clients = new HashSet<Clients>();
-        }
-    
-        public int ID { get; set; }
-        public string Title { get; set; }
-        public string Color { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Clients> Clients { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

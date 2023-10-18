@@ -18,6 +18,6 @@ namespace MUHITAV_Autoservice
         public int ServiceID { get; set; }
         public string PhotoPath { get; set; }
     
-        public virtual SERVESYS SERVESYS { get; set; }
+        public virtual Service Service { get; set; }
     }
 }
