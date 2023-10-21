@@ -11,7 +11,9 @@ namespace MUHITAV_Autoservice
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Drawing;
+    using System.Windows.Media;
+
     public partial class Service
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -49,6 +51,21 @@ namespace MUHITAV_Autoservice
             }
         }
 
+        public SolidColorBrush FonStyle
+        {
+            get
+            {
+                if(Discount > 0)
+                {
+                    return (SolidColorBrush)new BrushConverter().ConvertFromString("LightGreen");
+                }
+                else
+                {
+                    return (SolidColorBrush)new BrushConverter().ConvertFromString("White");
+                }
+            }
+        }
+        
         public int ID { get; set; }
         public string Title { get; set; }
         public string MainImagePath { get; set; }
