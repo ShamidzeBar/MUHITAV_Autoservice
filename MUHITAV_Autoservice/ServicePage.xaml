@@ -68,6 +68,7 @@
                         </Image>
                         
                         <TextBlock Text="{Binding Title}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" TextWrapping ="Wrap"></TextBlock>
+                        
                         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
                             <TextBlock Text="{Binding OldCost}" FontSize="20" TextDecorations="Strikethrough" Margin="5"></TextBlock>
                             <TextBlock Text="{Binding NewCost}" FontSize="20" Margin="5"></TextBlock>

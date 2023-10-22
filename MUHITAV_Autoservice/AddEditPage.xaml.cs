@@ -21,14 +21,19 @@ namespace MUHITAV_Autoservice
     public partial class AddEditPage : Page
     {
         private Service _currentService = new Service();
+        bool IsEditing = false;
+        string OldName;
 
         public AddEditPage(Service SelectedService)
         {
             InitializeComponent();
 
             if (SelectedService != null)
+            {
+                IsEditing = true;
                 _currentService = SelectedService;
-
+                OldName = _currentService.Title;
+            }
             DataContext = _currentService;
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -56,35 +61,35 @@ namespace MUHITAV_Autoservice
                 errors.AppendLine("Длительность услуги не может быть больше 240");
             }
 
+            var allServices = МУХИТАОАОВ_автосервисEntities.GetContext().Service.ToList();
+            allServices = allServices.Where(p => p.Title == _currentService.Title).ToList();
+            if(!IsEditing)
+            {
+                if (allServices.Count != 0)
+                {
+                    MessageBox.Show("Уже существует такая услуга");
+                    return;
+                }
+            }
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString());
                 return;
             }
-
-            var allServices = МУХИТАОАОВ_автосервисEntities.GetContext().Service.ToList();
-            allServices = allServices.Where(p => p.Title == _currentService.Title).ToList();
-
-            if (allServices.Count == 0)
+            if (_currentService.ID == 0)
             {
-
-                if (_currentService.ID == 0)
-                {
-                    МУХИТАОАОВ_автосервисEntities.GetContext().Service.Add(_currentService);
-                }
-                try
-                {
-                    МУХИТАОАОВ_автосервисEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Информация сохранена");
-                    Manager.MainFrame.GoBack();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
+                МУХИТАОАОВ_автосервисEntities.GetContext().Service.Add(_currentService);
             }
-            else
-                MessageBox.Show("Уже существует такая услуга");
+            try
+            {
+                МУХИТАОАОВ_автосервисEntities.GetContext().SaveChanges();
+                MessageBox.Show("Информация сохранена");
+                Manager.MainFrame.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }
